@@ -1,0 +1,76 @@
+<nav>
+    <a href="#0" aria-label="forecastr logo" class="logo">
+        <img style="width: 140px; height: 59px; opacity: 0.3;" src="assets/img/logo.png" alt="Angular Logo ">
+    </a>
+    <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+  <svg width="20" height="20" aria-hidden="true">
+  </svg>
+</button>
+    <ul class="admin-menu">
+        <li class="menu-heading">
+            <h3>Knowledge</h3>
+        </li>
+        <li>
+            <a routerLink="/knowledge/routing" routerLinkActive="active">
+                <span>Routing</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/knowledge/model-views" routerLinkActive="active">
+                <span>Model & View</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/knowledge/form" routerLinkActive="active">
+                <span>Form</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/knowledge/restapi" routerLinkActive="active">
+                <span>Call backend - RestAPI</span>
+            </a>
+        </li>
+        <li class="menu-heading">
+            <h3>Settings</h3>
+        </li>
+        <li>
+            <a href="#0">
+                <svg>
+       
+      </svg>
+                <span>Settings</span>
+            </a>
+        </li>
+        <li>
+            <a href="#0">
+                <svg>
+        <use xlink:href="#options"></use>
+      </svg>
+                <span>Options</span>
+            </a>
+        </li>
+        <li>
+            <a href="#0">
+                <svg>
+        <use xlink:href="#charts"></use>
+      </svg>
+                <span>Charts</span>
+            </a>
+        </li>
+        <li>
+            <div class="switch">
+                <input type="checkbox" id="mode" checked>
+                <label for="mode">
+        <span></span>
+        <span>Dark</span>
+      </label>
+            </div>
+            <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+      <svg aria-hidden="true">
+       
+      </svg>
+      <span>Collapse</span>
+    </button>
+        </li>
+    </ul>
+</nav>
