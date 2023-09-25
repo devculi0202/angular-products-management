@@ -9,6 +9,10 @@ import { LayoutModule } from './layout/layout.module';
 import { ModelViewsComponent } from './modules/model-views/model-views.component';
 import { FormComponent } from './modules/form/form.component';
 import { RestapiComponent } from './modules/restapi/restapi.component';
+import { ProductDetailsComponent } from './modules/model-views/product-details/product-details.component';
+import { UpdateProductComponent } from './modules/model-views/update-product/update-product.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -17,13 +21,17 @@ import { RestapiComponent } from './modules/restapi/restapi.component';
     HomeComponent,
     ModelViewsComponent,
     FormComponent,
-    RestapiComponent
+    RestapiComponent,
+    ProductDetailsComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

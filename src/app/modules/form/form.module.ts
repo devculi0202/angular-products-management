@@ -5,7 +5,8 @@ import { FormRoutingModule } from './form-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     FormRoutingModule

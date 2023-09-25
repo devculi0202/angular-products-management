@@ -1,1 +1,19 @@
-<p>model-views works!</p>
+<table>
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <td>Action</td>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{product.productId}}</td>
+        <td>{{product.productName}}</td>
+        <td>
+            <button style="background-color: greenyellow; padding: 10px;" type="button" (click)="viewProduct(product.productId)">View</button>
+            <button style="background-color: yellow; padding: 10px;" type="button" routerLink="edit/{{product.productId}}">Edit</button>
+            <button style="background-color: red; padding: 10px;" type="button">Delete</button>
+        </td>
+    </tr>
+</table>
+<div *ngIf="productSelected">
+    <router-outlet></router-outlet>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/data/services/product.service';
+import { Product } from 'src/app/data/types/Product';
 
 @Component({
   selector: 'app-restapi',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./restapi.component.css']
 })
 export class RestapiComponent {
+
+  data = 'hehe';
+  constructor(private productService: ProductService) {  
+    this.productService.getProducts().subscribe((product: Product) =>{
+      const newProduct = Product.fromHttp(product);
+      console.log(newProduct);
+    })
+  }
 
 }
