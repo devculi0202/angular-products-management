@@ -1,0 +1,20 @@
+<div style="background-color: bisque;">
+    <br>
+    <h3>Edit product</h3>
+    <form action="" method="">
+        <label>Product Name</label>
+        <input style="padding: 3px;" type="text" id="name" [(ngModel)]="product.productName" name="name" required><br><br>
+        <label>Product Description</label>
+        <input style="padding: 3px;" type="text" [(ngModel)]="product.productDescription" name="desciption" required><br><br>
+        <label>Product Type</label>
+        <select style="padding: 3px;" id="products-type" [(ngModel)]="product.productType" name="products-type">
+          <option value="apple">convenience</option>
+          <option value="banana">shopping</option>
+       </select>
+        <br>
+        <br>
+        <label> Product Price:</label>
+        <input style="padding: 3px;" type="text" [(ngModel)]="product.productPrice" name="products-price" required><br><br>
+        <button style="background-color: yellow;" type="button" (click)="onSubmit()">submit</button>
+    </form>
+</div>
