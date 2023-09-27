@@ -9,11 +9,11 @@ import { Product } from 'src/app/data/types/Product';
 })
 export class RestapiComponent {
 
-  data = 'hehe';
+  products: Array<Product>;
   constructor(private productService: ProductService) {  
-    this.productService.getProducts().subscribe((product: Product) =>{
-      const newProduct = Product.fromHttp(product);
-      console.log(newProduct);
+    this.productService.getProducts().subscribe((products: Array<Product>) =>{
+     this.products = products;
+     console.log(this.products);
     })
   }
 

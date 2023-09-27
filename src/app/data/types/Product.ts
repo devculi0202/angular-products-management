@@ -9,7 +9,7 @@ export class Product {
 
     static fromHttp(product: Product) : Product {
         const newProduct = new Product();
-        newProduct.productId = product.productId;
+        newProduct.productId = product.id;
         newProduct.productDescription = product.productDescription;
         newProduct.productName = product.productName;
         newProduct.productPrice = product.productPrice;
