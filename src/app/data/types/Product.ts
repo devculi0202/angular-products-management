@@ -7,7 +7,7 @@ export class Product {
 
 
 
-    static fromHttp(product: Product) : Product {
+    static fromHttp(product: any) : Product {
         const newProduct = new Product();
         newProduct.productId = product.id;
         newProduct.productDescription = product.productDescription;
