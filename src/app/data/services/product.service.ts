@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Product, ProductType } from '../types/Product';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, retry } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 
@@ -21,19 +21,19 @@ export class ProductService {
   }
 
   sendProductEvent(product: Product) {
-
     this.productEmitEvent.next(product);
   }
 
   getProducts(): Observable<Array<Product>> {
     //transform the data that is got from api to list Product object
-    return this.httpClient.get<Array<Product>>(environment.hostUrl + '/product').pipe(map(dataArr => {
-        const products = new Array<Product>;
-        for (let data of dataArr) {
-          const product = Product.fromHttp(data);
-          products.push(product);
-        }
-        return products;
+    return this.httpClient.get<Array<Product>>(environment.hostUrl + '/product').pipe(retry(1)).
+    pipe(map(dataArr => {
+      const products = new Array<Product>;
+      for (let data of dataArr) {
+        const product = Product.fromHttp(data);
+        products.push(product);
+      }
+      return products;
     }));
   }
 }

@@ -8,6 +8,8 @@ import { FormComponent } from '../modules/form/form.component';
 import { FormModule } from '../modules/form/form.module';
 import { RestapiComponent } from '../modules/restapi/restapi.component';
 import { RestapiModule } from '../modules/restapi/restapi.module';
+import { DirectivesModule } from '../modules/directives/directives.module';
+import { DirectivesComponent } from '../modules/directives/directives.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,11 @@ const routes: Routes = [
         component: FormComponent,
         path: 'form',
         loadChildren: () => import('../modules/form/form.module').then(m => FormModule)
+      },
+      {
+        component: DirectivesComponent,
+        path: 'directives',
+        loadChildren: () => import('../modules/directives/directives.module').then(m => DirectivesModule)
       },
       {
         component: RestapiComponent,

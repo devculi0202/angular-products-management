@@ -13,6 +13,8 @@ import { ProductDetailsComponent } from './modules/model-views/product-details/p
 import { UpdateProductComponent } from './modules/model-views/update-product/update-product.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { DirectivesComponent } from './modules/directives/directives.component';
+import { EditModalComponent } from './shared/modals/edit-modal/edit-modal.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {HttpClientModule} from '@angular/common/http';
     FormComponent,
     RestapiComponent,
     ProductDetailsComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    DirectivesComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,

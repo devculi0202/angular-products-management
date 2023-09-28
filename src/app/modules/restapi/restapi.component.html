@@ -5,12 +5,20 @@
         <td>Product Description</td>
         <td>Product Type</td>
         <td>Product Price</td>
+        <td>Action</td>
     </tr>
     <tr *ngFor="let product of products">
         <td>{{product.productId}}</td>
         <td>{{product.productName}}</td>
         <td>{{product.productDescription}}</td>
         <td>{{product.productType}}</td>
-        <td>{{product.productPrice}}</td>
+        <td>{{product.productPrice}}$</td>
+        <td>
+            <button style="padding: 5px; background-color: yellow;" (click)="openEditModal()">Edit</button>
+            <button style="padding: 5px; background-color: red;">Delete</button>
+        </td>
     </tr>
 </table>
+<div *ngIf="isModalVisible">
+    <app-edit-modal></app-edit-modal>
+</div>
