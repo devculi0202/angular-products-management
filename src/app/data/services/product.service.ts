@@ -36,4 +36,14 @@ export class ProductService {
       return products;
     }));
   }
+
+  getProduct(id: any): Observable<Product> {
+    return this.httpClient.get<Product>(environment.hostUrl + '/product/'+id).pipe(retry(1)).pipe(map(
+      data=>{
+        let product = new Product();
+        product = Product.fromHttp(data);
+        return product;
+     }
+    ));
+  }
 }

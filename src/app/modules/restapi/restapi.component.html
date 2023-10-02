@@ -14,11 +14,11 @@
         <td>{{product.productType}}</td>
         <td>{{product.productPrice}}$</td>
         <td>
-            <button style="padding: 5px; background-color: yellow;" (click)="openEditModal()">Edit</button>
+            <button style="padding: 5px; background-color: yellow;" (click)="openEditModal(product.productId)">Edit</button>
             <button style="padding: 5px; background-color: red;">Delete</button>
         </td>
     </tr>
 </table>
-<div *ngIf="isModalVisible">
-    <app-edit-modal></app-edit-modal>
+<div *ngIf="isModalVisible" >
+    <app-edit-modal #editModal></app-edit-modal>
 </div>

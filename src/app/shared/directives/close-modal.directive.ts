@@ -5,23 +5,15 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class CloseModalDirective {
 
-  @Input() 
-  appCloseModal: boolean;
-
   constructor(private el: ElementRef) {
-
    }
 
-   @HostListener('click') 
-   onClick() {
-    console.log('hahahahahaha',this.appCloseModal)
-    if(!this.appCloseModal){
-      this.closeModal();
-    }
-    else {
-      this.openModal();
-    }
-  }
+   @HostListener('click')
+   onClick()
+   {
+
+    this.closeModal();
+   }
   
   closeModal(){
     const element = this.el.nativeElement;
@@ -32,13 +24,8 @@ export class CloseModalDirective {
 
   openModal(){
     const element = this.el.nativeElement;
+    element.style.display = 'block';
     const modalElement = element.querySelector('.modal');
     modalElement.style.display = 'block'; 
-    element.style.display = 'block';
   }
-
-  
-  
-
-
 }

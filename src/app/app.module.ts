@@ -16,7 +16,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { DirectivesComponent } from './modules/directives/directives.component';
 import { EditModalComponent } from './shared/modals/edit-modal/edit-modal.component';
 import { CloseModalDirective } from './shared/directives/close-modal.directive';
-import { OpenModalDirective } from './shared/directives/open-modal.directive';
 
 
 @NgModule({
@@ -31,7 +30,6 @@ import { OpenModalDirective } from './shared/directives/open-modal.directive';
     DirectivesComponent,
     EditModalComponent,
     CloseModalDirective,
-    OpenModalDirective
   ],
   imports: [
     BrowserModule,
