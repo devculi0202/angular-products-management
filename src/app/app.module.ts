@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DirectivesComponent } from './modules/directives/directives.component';
 import { EditModalComponent } from './shared/modals/edit-modal/edit-modal.component';
+import { CloseModalDirective } from './shared/directives/close-modal.directive';
+import { OpenModalDirective } from './shared/directives/open-modal.directive';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { EditModalComponent } from './shared/modals/edit-modal/edit-modal.compon
     ProductDetailsComponent,
     UpdateProductComponent,
     DirectivesComponent,
-    EditModalComponent
+    EditModalComponent,
+    CloseModalDirective,
+    OpenModalDirective
   ],
   imports: [
     BrowserModule,

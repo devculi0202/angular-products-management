@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
 import { CloseModalDirective } from './directives/close-modal.directive';
+import { OpenModalDirective } from './directives/open-modal.directive';
 
 
 
 @NgModule({
   declarations: [
     EditModalComponent,
-    CloseModalDirective
+    CloseModalDirective,
+    OpenModalDirective
   ],
   imports: [
     CommonModule

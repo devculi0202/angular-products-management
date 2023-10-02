@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RestapiRoutingModule } from './restapi-routing.module';
+import { DirectivesRoutingModule } from './directives-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RestapiRoutingModule
+    DirectivesRoutingModule
   ]
 })
-export class RestapiModule { }
+export class DirectivesModule { }
