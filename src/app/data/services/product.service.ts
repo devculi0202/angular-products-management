@@ -27,23 +27,32 @@ export class ProductService {
   getProducts(): Observable<Array<Product>> {
     //transform the data that is got from api to list Product object
     return this.httpClient.get<Array<Product>>(environment.hostUrl + '/product').pipe(retry(1)).
-    pipe(map(dataArr => {
-      const products = new Array<Product>;
-      for (let data of dataArr) {
-        const product = Product.fromHttp(data);
-        products.push(product);
-      }
-      return products;
-    }));
+      pipe(map(dataArr => {
+        const products = new Array<Product>;
+        for (let data of dataArr) {
+          const product = Product.fromHttp(data);
+          products.push(product);
+        }
+        return products;
+      }));
   }
 
   getProduct(id: any): Observable<Product> {
-    return this.httpClient.get<Product>(environment.hostUrl + '/product/'+id).pipe(retry(1)).pipe(map(
-      data=>{
+    return this.httpClient.get<Product>(environment.hostUrl + '/product/' + id).pipe(map(
+      data => {
+        console.log('data getProduct', data);
         let product = new Product();
         product = Product.fromHttp(data);
         return product;
-     }
+      }
     ));
+  }
+
+  updateProduct(productBody: any, id: any): Observable<Product> {
+    return this.httpClient.put<Product>(environment.hostUrl + 'product/' + id, productBody);
+  }
+
+  deleteProduct(id:any): Observable<Product> {
+    return this.httpClient.delete<Product>(environment.hostUrl+ 'product/'+id);
   }
 }

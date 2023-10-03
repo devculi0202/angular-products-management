@@ -1,31 +1,35 @@
-import { ElementRef, Injectable } from '@angular/core';
+import { ElementRef, Injectable, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/data/services/product.service';
 import { Product } from 'src/app/data/types/Product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EditModalService {
-  private isModalVisible = false;
-  product!: Product;
+export class EditModalService implements OnDestroy {
+  product = new Product();
+  subscription: Subscription;
+
 
   constructor(private productService: ProductService) { }
-
-  openModal(productId:any): Product{
-    this.isModalVisible = true;
-      this.productService.getProduct(productId).subscribe(data => {
-        this.product = data;
-      });
-      return this.product;
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
-  closeModal(){
-    this.isModalVisible = false;
-    console.log('close', this.isModalVisible);
+   getProductFromAPI(productId: any): Observable<Product>{
+    return this.productService.getProduct(productId);
   }
-  
-  isModalOpen()
-  {
-    return this.isModalVisible;
+
+  updateProduct(product: Product): Observable<Product> {
+    let body = {
+      productName: product.productName,
+      productDescription: product.productDescription,
+      productType: product.productType,
+      productPrice: product.productPrice,
+      id: product.productId
+    };
+    console.log(body);
+    return this.productService.updateProduct(body, product.productId);
   }
+
 }

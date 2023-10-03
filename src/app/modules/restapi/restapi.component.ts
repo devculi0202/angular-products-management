@@ -1,35 +1,62 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/data/services/product.service';
 import { Product } from 'src/app/data/types/Product';
 import { EditModalComponent } from 'src/app/shared/modals/edit-modal/edit-modal.component';
 import { EditModalService } from 'src/app/shared/modals/edit-modal/edit-modal.service';
-import { ProductDetailsModule } from '../model-views/product-details/product-details.module';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-restapi',
   templateUrl: './restapi.component.html',
   styleUrls: ['./restapi.component.css']
 })
-export class RestapiComponent {
+export class RestapiComponent implements OnInit, OnDestroy {
 
-  @ViewChild(EditModalComponent)
-  editModalComponent!: EditModalComponent;
+  @ViewChild('editModal', { static: false })
+  editModal: EditModalComponent;
+
+  productId: any;
 
   products: Array<Product>;
-  isModalVisible: boolean;
+  isModalVisible = false;
   product: Product;
+  subscription: Subscription;
 
-  constructor(private productService: ProductService, private editModalService: EditModalService,) {
-    this.productService.getProducts().subscribe((products: Array<Product>) => {
-      this.products = products;
-    })
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.loadProducts();
   }
 
   openEditModal(productId: any) {
-    console.log('open modal');
-    this.isModalVisible = this.editModalService.isModalOpen();
-    this.editModalComponent.openModal(productId);
+    this.isModalVisible = true;
+    this.productId = productId;
   }
 
+  closeEditModal() {
+    this.isModalVisible = false;
+    this.loadProducts();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  loadProducts() {
+    this.subscription = this.productService.getProducts().subscribe((products: Array<Product>) => {
+      this.products = products;
+    });
+  }
+
+  deleteProduct(id: any) {
+    this.subscription = this.productService.deleteProduct(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.loadProducts();
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
 
 }

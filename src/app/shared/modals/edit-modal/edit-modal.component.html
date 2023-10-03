@@ -10,14 +10,14 @@
       <label for="productDescription">Product Description:</label>
       <input type="text" id="productDescription" placeholder="Enter product description" [(ngModel)]="product.productDescription" name="productDescription">
       <label for="productType">Product Type:</label>
-      <select id="productName">
-        <option value="product1">Product 1</option>
-        <option value="product2">Product 2</option>
-        <option value="product3">Product 3</option>
+      <select id="productType" name="productType" [(ngModel)]="product.productType">
+        <option value="{{product.productType}}">
+          {{product.productType}}
+        </option>
       </select>
       <label for="productPrice">Price:</label>
       <input type="number" id="productPrice" placeholder="Enter product price" [(ngModel)]="product.productPrice" name="productPrice">
-      <button type="button" class="save-button" id="saveProductBtn">Save</button>
+      <button type="button" class="save-button" id="saveProductBtn" (click)="saveProduct()">Save</button>
     </form>
     <button id="closeModalBtn" (click)="closeModal()">Close</button>
   </div>
