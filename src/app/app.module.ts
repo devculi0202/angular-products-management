@@ -16,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { DirectivesComponent } from './modules/directives/directives.component';
 import { EditModalComponent } from './shared/modals/edit-modal/edit-modal.component';
 import { CloseModalDirective } from './shared/directives/close-modal.directive';
+import { ConfirmModalComponent } from './shared/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CloseModalDirective } from './shared/directives/close-modal.directive';
     UpdateProductComponent,
     DirectivesComponent,
     EditModalComponent,
+    ConfirmModalComponent,
     CloseModalDirective,
   ],
   imports: [

@@ -2,8 +2,8 @@ import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnDe
 import { ProductService } from 'src/app/data/services/product.service';
 import { Product } from 'src/app/data/types/Product';
 import { EditModalComponent } from 'src/app/shared/modals/edit-modal/edit-modal.component';
-import { EditModalService } from 'src/app/shared/modals/edit-modal/edit-modal.service';
 import { Subscription } from 'rxjs';
+import { ConfirmModalComponent } from 'src/app/shared/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-restapi',
@@ -12,13 +12,19 @@ import { Subscription } from 'rxjs';
 })
 export class RestapiComponent implements OnInit, OnDestroy {
 
-  @ViewChild('editModal', { static: false })
+  @ViewChild('editModal', { static: false})
   editModal: EditModalComponent;
 
-  productId: any;
+  @ViewChild('confirmModal')
+  confirmModal: ConfirmModalComponent;
 
+  productId: any;
   products: Array<Product>;
   isModalVisible = false;
+  isConfirmModalVisible = false;
+  productIdWillDelete: any;
+
+
   product: Product;
   subscription: Subscription;
 
@@ -48,6 +54,26 @@ export class RestapiComponent implements OnInit, OnDestroy {
     });
   }
 
+  showConfirmModal(id: any){
+    this.isConfirmModalVisible = true;
+    this.productIdWillDelete = id;
+  }
+
+  confirmModalOutput(data: boolean) {
+     if(data){
+      this.closeConfirmModal();
+      this.deleteProduct(this.productIdWillDelete);
+     }
+     else {
+      this.closeConfirmModal();
+     }
+
+  }
+
+  closeConfirmModal(){
+    this.isConfirmModalVisible = false;
+  }
+
   deleteProduct(id: any) {
     this.subscription = this.productService.deleteProduct(id).subscribe(
       (response) => {
@@ -58,5 +84,4 @@ export class RestapiComponent implements OnInit, OnDestroy {
         console.log(error);
       });
   }
-
 }

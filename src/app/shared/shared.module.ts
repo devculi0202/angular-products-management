@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
 import { CloseModalDirective } from './directives/close-modal.directive';
 import { OpenModalDirective } from './directives/open-modal.directive';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 
 
@@ -10,7 +11,8 @@ import { OpenModalDirective } from './directives/open-modal.directive';
   declarations: [
     EditModalComponent,
     CloseModalDirective,
-    OpenModalDirective
+    OpenModalDirective,
+    ConfirmModalComponent
   ],
   imports: [
     CommonModule

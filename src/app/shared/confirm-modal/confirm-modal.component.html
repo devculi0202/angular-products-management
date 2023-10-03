@@ -1,0 +1,9 @@
+<!-- The Modal -->
+<div class="overlay" id="confirmationModal">
+    <div class="modal">
+        <h2>Confirmation</h2>
+        <p>Are you sure you want to delete product id {{productId}}?</p>
+        <button class="confirm" id="confirmBtn" (click)="confirmDelete(true)">Confirm</button>
+        <button class="cancel" id="cancelBtn" (click)="confirmDelete(false)">Cancel</button>
+    </div>
+</div>

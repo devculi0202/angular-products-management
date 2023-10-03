@@ -17,11 +17,14 @@
             <td>
                 <button style="padding: 5px; background-color: yellow;"
                     (click)="openEditModal(product.productId)">Edit</button>
-                <button style="padding: 5px; background-color: red;" (click)="deleteProduct(product.productId)">Delete</button>
+                <button style="padding: 5px; background-color: red;" (click)="showConfirmModal(product.productId)">Delete</button>
             </td>
         </tr>
     </table>
 </div>
 <div *ngIf="isModalVisible">
     <app-edit-modal #editModal [productId]="productId" (modalInVisibleEvent)="closeEditModal()"></app-edit-modal>
+</div>
+<div *ngIf="isConfirmModalVisible">
+    <app-confirm-modal #confirmModal [productId]="productIdWillDelete" (confirmDeleteEvent)="confirmModalOutput($event)"></app-confirm-modal>
 </div>
